@@ -1,6 +1,7 @@
 package ru.baranov.calculatorservice.service.impl;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 import ru.baranov.calculatorservice.dto.*;
 import ru.baranov.calculatorservice.exceptions.AgeException;
@@ -8,6 +9,8 @@ import ru.baranov.calculatorservice.exceptions.AmountException;
 import ru.baranov.calculatorservice.exceptions.ScoringException;
 import ru.baranov.calculatorservice.exceptions.WorkExperienceException;
 import ru.baranov.calculatorservice.service.CalculatorService;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -20,7 +23,10 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
-@ConfigurationProperties(prefix = "credit.rate")
+@ConfigurationProperties(prefix = "credit")
+@EnableConfigurationProperties
+@Getter
+@Setter
 public class CalculatorServiceImpl implements CalculatorService {
     private Integer rate;
 
